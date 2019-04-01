@@ -1,39 +1,31 @@
 import React from "react";
 import ProductData from "./Data";
 import "./styles/cart.css";
-import Init from "./Product";
+import Product from "./Product";
 
 class Cart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = [
+      {name: 'Apple', price: '$2', limit: 10},
+      {name: 'Bat', price: '$3', limit: 15}
+    ];
+  }
+
+
   render(){
-let itemList = this.props.items.map(items=>{
     return(
-<div class="card">
+<div class="ui card">
   <div class="content">
-    <div class="header">{items.name}</div>
+    <div class="header">{this.state.name}</div>
     <div class="description">
-      {items.price}
+  {this.state.price}
     </div>
   </div>
   <div class="ui bottom attached button">
     <i class="add icon"></i>
-    Add Product
+    Add to Cart
   </div>
-</div>)
-})
-return(
-  <div className= "contain">
-    <h3 className= "center">Items for Sale</h3>
-    <div className= "box">
-      {itemList}
-    </div>
-  </div>
-)
-}}
-
-const map = (state)=>{
-  return {
-    items: state.items
-  }
-}
+</div>)}}
 
 export default Cart;
